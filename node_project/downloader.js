@@ -1,6 +1,10 @@
 // Node program to perform parallel downloads using async.parallel
-// If modules already present, checks for version and updates if 
-// necessary
+// Also get download time so we can check if it really async, that is,
+// whether modules are not downloaded in the order in which they are
+// specified. Also time taken for each download. So we can check if node 
+// passes onto the next module download if a certain download is taking 
+// much longer than expected. If modules already present, checks for version 
+// and updates if necessary. Also saves authentication. Not secure. 
 
 var async = require("async");
 var exec = require('child_process').exec;
@@ -13,35 +17,51 @@ module.exports = function Downloader() {
 	}
 
 	var modules = process.argv.slice(2);
-	var module1 = modules[0];
-	var module2 = modules[1];
+	var count = -1;
 
-	// can use doUntil or doWhilst
-  async.parallel([
-    function(callback) {
-      var command = "sudo npm install " + module1;
-      download(command);
-      if(callback())
-        callback();
-    }, 
-    function(callback) {
-      var command = "sudo npm install " + module2;
-      download(command);
-      if(callback())
-        callback();
-    }
-  ], function(err) {
-    if(err) return next(err);
-    else console.log("Task complete. ");
-  });
+	// can use whilst
+	async.whilst(
+		function() {
+			return ++count < modules.length;
+		}, 
+		function(callback) {
+			var command = "sudo npm install " + modules[count];
+			console.log("About to download " + count + ": " + modules[count]);
+			download(command, modules[count]);
+			callback();
+		},
+		function(err) {
+			if(err)
+				console.log("Error during download. ");
+		}
+	)
+/*
+	async.parallel([
+	  function(callback) {
+	    var command = "sudo npm install " + module1;
+	    download(command);
+	    if(callback())
+	      callback();
+	  }, 
+	  function(callback) {
+	    var command = "sudo npm install " + module2;
+	    download(command);
+	    if(callback())
+	      callback();
+	  }
+	], function(err) {
+	  if(err) return next(err);
+	  else console.log("Task complete. ");
+	});
+*/
 
-  function download(command) {
+  function download(command, moduleName) {
     exec(command, function(err, stdout, strerr) {
         if(err) {
-          console.log("Failed to download " + module1);
+          console.log("Failed to download " + moduleName);
         }
         else {
-          console.log("Downloaded " + module1 + "successfully!");
+          console.log("Downloaded " + moduleName + " successfully!");
         }
       });
   }
