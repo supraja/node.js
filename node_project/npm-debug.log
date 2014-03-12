@@ -1,0 +1,58 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'ndemailer' ]
+2 info using npm@1.2.11
+3 info using node@v0.8.21
+4 verbose read json /home/marty/Desktop/code/node.js/node_project/package.json
+5 verbose read json /home/marty/Desktop/code/node.js/node_project/node_modules/forever/package.json
+6 verbose read json /home/marty/Desktop/code/node.js/node_project/node_modules/nodemailer/package.json
+7 verbose read json /home/marty/Desktop/code/node.js/node_project/node_modules/async/package.json
+8 verbose read json /home/marty/Desktop/code/node.js/node_project/package.json
+9 verbose cache add [ 'ndemailer', null ]
+10 verbose cache add name=undefined spec="ndemailer" args=["ndemailer",null]
+11 verbose parsed url { pathname: 'ndemailer', path: 'ndemailer', href: 'ndemailer' }
+12 silly lockFile c67eafd2-ndemailer ndemailer
+13 verbose lock ndemailer /home/marty/.npm/c67eafd2-ndemailer.lock
+14 silly lockFile c67eafd2-ndemailer ndemailer
+15 silly lockFile c67eafd2-ndemailer ndemailer
+16 verbose addNamed [ 'ndemailer', '' ]
+17 verbose addNamed [ null, '' ]
+18 silly lockFile 962f9412-ndemailer ndemailer@
+19 verbose lock ndemailer@ /home/marty/.npm/962f9412-ndemailer.lock
+20 silly addNameRange { name: 'ndemailer', range: '', hasData: false }
+21 verbose url raw ndemailer
+22 verbose url resolving [ 'http://registry.npmjs.org/', './ndemailer' ]
+23 verbose url resolved http://registry.npmjs.org/ndemailer
+24 info trying registry request attempt 1 at 09:11:32
+25 http GET http://registry.npmjs.org/ndemailer
+26 http 404 http://registry.npmjs.org/ndemailer
+27 silly registry.get cb [ 404,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Wed, 12 Mar 2014 14:11:32 GMT',
+27 silly registry.get     age: '0',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-v42-ASH, cache-d45-DAL',
+27 silly registry.get     'x-cache': 'MISS, MISS',
+27 silly registry.get     'x-cache-hits': '0, 0',
+27 silly registry.get     'x-timer': 'S1394633492.485650301,VS0,VS-610,VE-587,VE56' } ]
+28 silly lockFile 962f9412-ndemailer ndemailer@
+29 silly lockFile 962f9412-ndemailer ndemailer@
+30 error 404 'ndemailer' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Linux 3.11.0-15-generic
+32 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "ndemailer"
+33 error cwd /home/marty/Desktop/code/node.js/node_project
+34 error node -v v0.8.21
+35 error npm -v 1.2.11
+36 error code E404
+37 verbose exit [ 1, true ]

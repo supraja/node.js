@@ -28,11 +28,14 @@ module.exports = function Downloader() {
 			var command = "sudo npm install " + modules[count];
 			console.log("About to download " + count + ": " + modules[count]);
 			download(command, modules[count]);
-			callback();
+			if(callback()) callback();
 		},
 		function(err) {
-			if(err)
+			if(err) {
 				console.log("Error during download. ");
+				process.exit(1);
+			}
+			else process.exit(0);
 		}
 	)
 /*
@@ -50,8 +53,8 @@ module.exports = function Downloader() {
 	      callback();
 	  }
 	], function(err) {
-	  if(err) return next(err);
-	  else console.log("Task complete. ");
+	  if(err) { return next(err); }
+	  else { console.log("Task complete. "); }
 	});
 */
 
